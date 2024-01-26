@@ -5,7 +5,7 @@ namespace Character.Walk
 {
     public class WalkAction
     {
-        public void Execute(ICharacterView characterView, Vector2 direction)
+        public void Execute(ICharacterView characterView, Vector3 direction)
         {
             characterView.Walk(direction);
         }
