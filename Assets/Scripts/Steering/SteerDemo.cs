@@ -9,8 +9,11 @@ public class SteerDemo : MonoBehaviour
 
     void Update()
     {
-        agent.UpdateAgent();
         transform.position += agent.steerVector * Time.deltaTime * speed;
-
+        /*
+         * get joystick using 
+         * agent.JoystickVector;
+         * this will give you a non normalized vector (so player can stop)
+         */
     }
 }

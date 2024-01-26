@@ -1897,7 +1897,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   agent: {fileID: 355275326}
-  speed: 20
+  speed: 1
   TurnTime: 0
 --- !u!43 &355400367
 Mesh:

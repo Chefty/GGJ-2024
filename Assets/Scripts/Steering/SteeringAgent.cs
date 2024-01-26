@@ -2,20 +2,17 @@ using UnityEngine;
 
 public class SteeringAgent : MonoBehaviour
 {
-    //[Range(0f, 1f)]
-    //[SerializeField] private float _turningSpeed;
     [SerializeField] private Steer[] _behaviours;
     private Vector3 _steerVector;
     private float _steerMagnitude;
     //if you want the direction the ai wants to go to.
-    // TODO may need to multiply with a Quaternion to account for camera angle as this
-    // vector is world spaced. Same in case the map rotates at some points
-    public Vector2 VectorToJoystick
+    // TODO may need to multiply with a Quaternion to account for map/agent's rotation
+    public Vector2 JoystickVector
     {
         get
         {
             UpdateAgent();
-            return new Vector2(_steerVector.x, _steerVector.z).normalized;
+            return new Vector2(Mathf.Clamp(_steerVector.x, -1f, 1f), Mathf.Clamp(_steerVector.z, -1f, 1f));
         }
     }
 
@@ -49,18 +46,25 @@ public class SteeringAgent : MonoBehaviour
             newSteerVector += _behaviours[i].Compute() * _behaviours[i].Weight;
         }
 
-        // do slerp here if need to smooth vectors
+        // do Lerp/Slerp here if need to smooth vectors
         _steerVector = newSteerVector;
         _steerMagnitude = newSteerVector.magnitude;
     }
 
     private void OnDrawGizmos()
     {
-        if (!_DebugAgent) return;
+        if (!_DebugAgent || !Application.isPlaying) return;
 
         for (int i = 0; i < _behaviours.Length; i++)
         {
             _behaviours[i].DebugShow();
         }
+
+        Gizmos.color = Color.green;
+        Gizmos.DrawRay(transform.position, steerVector);
+        
+        Gizmos.color = Color.blue;
+        var vectorjoystick = JoystickVector;
+        Gizmos.DrawRay(transform.position, new Vector3(vectorjoystick.x, 0f, vectorjoystick.y) * 10f);
     }
 }
