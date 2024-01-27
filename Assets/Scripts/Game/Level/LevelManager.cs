@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,7 +15,17 @@ namespace Game.Level
         [SerializeField] private NpcCharacterView npcPrefab;
 
         private List<NpcCharacterView> allNpcs = new List<NpcCharacterView>();
-        
+
+        private void Awake()
+        {
+            LobbyManager.OnTransitionToGameMode += DoStartLevel;
+        }
+
+        private void DoStartLevel()
+        {
+            StartLevel();
+        }
+
         public async UniTask StartLevel()
         {
             DeleteAllNpcs();
