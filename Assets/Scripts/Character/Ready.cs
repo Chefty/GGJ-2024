@@ -1,5 +1,6 @@
 using System;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class Ready : MonoBehaviour
 {
@@ -8,6 +9,8 @@ public class Ready : MonoBehaviour
 
     private void Awake() => OnPlayerAwake?.Invoke(transform);
 
-    public void OnPressedReady() => OnPlayerPressedReady?.Invoke(transform);
-
+    public void OnStart(InputAction.CallbackContext context)
+    {
+        if (context.canceled) OnPlayerPressedReady?.Invoke(transform);
+    }
 }

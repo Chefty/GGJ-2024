@@ -145,7 +145,7 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""78f9d7f7-b168-42cf-92c2-e55dddebed44"",
-                    ""path"": ""<Gamepad>/startButton"",
+                    ""path"": ""<Gamepad>/start"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Gamepad Control Scheme"",
