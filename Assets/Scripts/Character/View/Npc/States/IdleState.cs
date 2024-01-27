@@ -4,8 +4,8 @@ namespace Character.View.Npc.States
 {
     public class IdleState : IState
     {
-        private const float MIN_SECONDS_IDLING = 0.5f;
-        private const float MAX_SECONDS_IDLING = 2.5f;
+        private const float MIN_SECONDS_IDLING = 1f;
+        private const float MAX_SECONDS_IDLING = 3f;
             
         public NextState[] NextStates => new[]
         {

@@ -33,7 +33,6 @@ namespace Character.View.Npc
                 if (!IsReadyToStart && initialState.Execute(characterView))
                 {
                     IsReadyToStart = true;
-                    Debug.LogWarning("READY");
                     state = GetNextState(initialState);
                 }
                 return;
@@ -41,10 +40,8 @@ namespace Character.View.Npc
             
             if (state.Execute(characterView))
             {
-                Debug.LogWarning($"State {state.GetType()} done.");
                 state = GetNextState(state);
                 state.Start(characterView);
-                Debug.LogWarning($"State {state.GetType()} is the next state.");
             }
         }
 

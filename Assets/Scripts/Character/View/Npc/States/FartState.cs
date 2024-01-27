@@ -10,8 +10,8 @@ namespace Character.View.Npc.States
         
         public NextState[] NextStates => new[]
         {
-            new NextState(0.7f, new WalkState()),
-            new NextState(0.3f, new IdleState())
+            new NextState(0.3f, new WalkState()),
+            new NextState(0.7f, new IdleState())
         };
 
         private bool shortFart;
