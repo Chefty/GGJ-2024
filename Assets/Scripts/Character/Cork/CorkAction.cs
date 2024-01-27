@@ -1,3 +1,4 @@
+using System.Diagnostics;
 using System.Threading.Tasks;
 using Character.View;
 
@@ -13,6 +14,7 @@ namespace Character.Cork
             foreach (var affectedCharacter in affectedCharacters)
             {
                 affectedCharacter.CharacterProperties.ApplyCork();
+                UnityEngine.Debug.Log("Player " + affectedCharacter.Transform.gameObject.name + "got corked!");
             }
 
             WaitAndResetAppliedCork(affectedCharacters);

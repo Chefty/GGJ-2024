@@ -13,6 +13,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: NpcCharacter
       objectReference: {fileID: 0}
+    - target: {fileID: 5318177828686233146, guid: c0be0fcd8ed4d43e497e31d70a2ca626,
+        type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 9150861202389811163, guid: c0be0fcd8ed4d43e497e31d70a2ca626,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -73,7 +78,7 @@ PrefabInstance:
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 5318177828686233146, guid: c0be0fcd8ed4d43e497e31d70a2ca626,
         type: 3}
-      insertIndex: -1
+      insertIndex: 3
       addedObject: {fileID: 8988716911628689789}
   m_SourcePrefab: {fileID: 100100000, guid: c0be0fcd8ed4d43e497e31d70a2ca626, type: 3}
 --- !u!1 &1650282986298188790 stripped
