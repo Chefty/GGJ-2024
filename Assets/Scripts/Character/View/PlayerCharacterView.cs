@@ -1,5 +1,7 @@
 using System.Collections;
+using System.Collections.Generic;
 using Character.Properties;
+using Character.View.Npc;
 using UI;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -10,11 +12,16 @@ namespace Character.View
     public class PlayerCharacterView : BaseCharacterView
     {
         private static int UserIdCounter = 0;
+
+        [SerializeField] private float detectionRange = 2f;
+        [SerializeField] private float sphereRadius = 2f;
+        [SerializeField] private LayerMask characterLayer;
         
         private readonly WaitForSeconds secondDelay = new(1f);
         private Coroutine holdFartCoroutine = null;
-        private float holdFartCounter;
+        private float holdFartTimer = 1f;
         private Vector3 moveDirection;
+        private bool isFarting = false;
         
         private PlayerControls playerControls;
 
@@ -32,7 +39,7 @@ namespace Character.View
 
         private void Update()
         {
-            if (moveDirection != Vector3.zero)
+            if (moveDirection != Vector3.zero && !isFarting)
             {
                 MoveRelativeToMainCamera();
             }
@@ -50,6 +57,34 @@ namespace Character.View
             walkAction.Execute(this, cameraRelativeMoveDirection);
         }
 
+        void OnDrawGizmosSelected()
+        {
+            Gizmos.color = Color.yellow;
+            Gizmos.DrawWireSphere(transform.position + transform.forward * detectionRange, sphereRadius);
+        }
+
+        private ICharacterView[] GetCharactersToAttack()
+        {
+            List<NpcCharacterView> npcCharacterViewList = new();
+            Collider[] overlappingNPCs = Physics.OverlapSphere(transform.position + transform.forward * detectionRange, sphereRadius, characterLayer);
+
+            foreach (var npcCollider in overlappingNPCs)
+            {
+                if (npcCollider.gameObject == gameObject)
+                {
+                    continue;
+                }
+
+                NpcCharacterView npcCharacterView = npcCollider.gameObject.GetComponent<NpcCharacterView>();
+                if (npcCharacterView)
+                {
+                    npcCharacterViewList.Add(npcCharacterView);
+                }
+            }
+
+            return npcCharacterViewList.ToArray();
+        }
+
         protected override ICharacterProperties GetCharacterProperties()
         {
             return CharacterPropertiesFactory.Get(false);
@@ -65,29 +100,40 @@ namespace Character.View
 
         public void OnAttack(InputAction.CallbackContext context)
         {
-            corkAction.Execute(this, null);
+            if (context.performed)
+            {
+                corkAction.Execute(this, GetCharactersToAttack());
+            }
         }
 
         public void OnFart(InputAction.CallbackContext context)
         {
             if (context.started && holdFartCoroutine == null)
             {
-                StartFarting();
+                isFarting = true;
                 holdFartCoroutine = StartCoroutine(HoldButtonRoutine());
             }
-
-            return;
+            else if (context.canceled && holdFartCoroutine != null)
+            {
+                StopCoroutine(holdFartCoroutine);
+                holdFartCoroutine = null;
+                fartAction.Execute(this, holdFartTimer);
+                holdFartTimer = 1f;
+                isFarting = false;
+            }
 
             IEnumerator HoldButtonRoutine()
             {
                 yield return new WaitUntil(context.ReadValueAsButton);
                 while (context.ReadValueAsButton())
                 {
+                    if (holdFartTimer == 2f)
+                    {
+                        StartFarting();
+                    }
                     yield return secondDelay;
-                    holdFartCounter += 3f;
+                    holdFartTimer++;
                 }
-                fartAction.Execute(this, holdFartCounter);
-                holdFartCoroutine = null;
             }
         }
         

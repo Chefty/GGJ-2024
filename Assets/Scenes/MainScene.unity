@@ -2393,6 +2393,21 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4748712972197387781, guid: 2668703e5798a644baa208435b0d03b1,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4748712972197387781, guid: 2668703e5798a644baa208435b0d03b1,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4748712972197387781, guid: 2668703e5798a644baa208435b0d03b1,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 9163199040522195684, guid: 2668703e5798a644baa208435b0d03b1,
         type: 3}
       propertyPath: m_IsActive
@@ -2441,6 +2456,11 @@ PrefabInstance:
       propertyPath: _fadeImage
       value: 
       objectReference: {fileID: 356017663}
+    - target: {fileID: 5130562689950162593, guid: 1dc204f90948082478714bc85d30c4e9,
+        type: 3}
+      propertyPath: amountOfNpcs
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6023227452586332772, guid: 1dc204f90948082478714bc85d30c4e9,
         type: 3}
       propertyPath: m_LocalPosition.x
