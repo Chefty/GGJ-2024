@@ -1,6 +1,4 @@
-using System;
 using System.Collections;
-using System.Linq.Expressions;
 using Character.Properties;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -13,6 +11,7 @@ namespace Character.View
         private readonly WaitForSeconds secondDelay = new(1f);
         private Coroutine holdFartCoroutine = null;
         private float holdFartCounter;
+        private Vector3 moveDirection;
         protected PlayerControls playerControls;
 
         private void Awake() 
@@ -21,16 +20,37 @@ namespace Character.View
             playerControls.Enable();
         }
 
+        private void Update()
+        {
+            if (moveDirection != Vector3.zero)
+            {
+                MoveRelativeToMainCamera();
+            }
+        }
+
+        private void MoveRelativeToMainCamera()
+        {
+            Vector3 cameraForward = Camera.main.transform.forward;
+            Vector3 cameraRight = Camera.main.transform.right;
+            cameraForward.y = 0;
+            cameraRight.y = 0;
+            cameraForward.Normalize();
+            cameraRight.Normalize();
+            Vector3 cameraRelativeMoveDirection = (cameraForward * moveDirection.z + cameraRight * moveDirection.x).normalized;
+            walkAction.Execute(this, cameraRelativeMoveDirection);
+        }
+
         protected override ICharacterProperties GetCharacterProperties()
         {
             return CharacterPropertiesFactory.Get(false);
         }
 
+#region PlayerInputActions
+
         public void OnMove(InputAction.CallbackContext context)
         {
-            var move = context.ReadValue<Vector2>();
-            var direction = new Vector3(move.x, 0, move.y);
-            walkAction.Execute(this, direction);
+            var moveInputAxis = context.ReadValue<Vector2>();
+            moveDirection = new Vector3(moveInputAxis.x, 0, moveInputAxis.y);
         }
 
         public void OnAttack(InputAction.CallbackContext context)
@@ -42,6 +62,7 @@ namespace Character.View
         {
             if(context.started && holdFartCoroutine == null)
             {
+                StartFarting();
                 holdFartCoroutine = StartCoroutine(HoldButtonRoutine());
             }
 
@@ -59,5 +80,7 @@ namespace Character.View
                 holdFartCoroutine = null;
             }
         }
+        
+#endregion
     }
 }
