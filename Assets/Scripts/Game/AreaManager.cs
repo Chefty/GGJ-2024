@@ -17,6 +17,8 @@ public class AreaManager : MonoBehaviour
 
         _playAreaBounds = _gameArea.bounds;
         _lobbyBounds = _lobbyArea.bounds;
+        _gameArea.enabled = false;
+        _lobbyArea.enabled = false;
     }
 
     public Vector3 GetRandomPositionInLobby() => GetRandomPositionInBounds(_lobbyBounds);

@@ -6,7 +6,9 @@ using System.Linq;
 
 public class LobbyPlayerHandler : MonoBehaviour
 {
+    [SerializeField] private TMPro.TMP_Text _playerNameLabelPrefab;
     private Dictionary<Transform, bool> _playerInputToPlayerTransform;
+    private List<TMPro.TMP_Text> _labels;
 
     public static event Action OnAllPlayersReady;
 
@@ -16,6 +18,7 @@ public class LobbyPlayerHandler : MonoBehaviour
         Ready.OnPlayerAwake += RegisterPlayer;
         Ready.OnPlayerPressedReady += OnPlayerPressedReady;
         _playerInputToPlayerTransform = new Dictionary<Transform, bool>();
+        _labels = new List<TMPro.TMP_Text>();
     }
 
     private void OnDestroy() => UnsubscribeToEvents();
@@ -65,8 +68,13 @@ public class LobbyPlayerHandler : MonoBehaviour
 
     private void SetupPlayerForLobby(Transform player)
     {
+        player.name = $"Player {_playerInputToPlayerTransform.Count}";
         Vector3 positionInLobby = AreaManager.Instance.GetRandomPositionInLobby();
         player.position = new Vector3(positionInLobby.x, 2f, positionInLobby.z);
+        _labels.Add(Instantiate(_playerNameLabelPrefab));
+        _labels.Last().transform.SetParent(player);
+        _labels.Last().transform.localPosition = Vector3.up * 3f;
+        _labels.Last().text = player.name;
     }
 
     private void MovePlayersToLevel()
@@ -76,5 +84,12 @@ public class LobbyPlayerHandler : MonoBehaviour
             Vector3 positionInPlayArea = AreaManager.Instance.GetRandomPositionInPlayArea();
             player.Key.position = new Vector3(positionInPlayArea.x, 2f, positionInPlayArea.z);
         }
+
+        foreach (var label in _labels)
+        {
+            Destroy(label.gameObject);
+        }
+        _playerInputToPlayerTransform.Clear();
+        _labels.Clear();
     }
 }
