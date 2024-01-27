@@ -1868,7 +1868,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Weight: 1
-  _arriveDistance: 1
+  _arriveDistance: 4
 --- !u!114 &355275326
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1897,8 +1897,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   agent: {fileID: 355275326}
-  speed: 1
-  TurnTime: 0
+  speed: 2
 --- !u!43 &355400367
 Mesh:
   m_ObjectHideFlags: 0

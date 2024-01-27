@@ -5,11 +5,10 @@ public class SteerDemo : MonoBehaviour
     public SteeringAgent agent;
     public float speed;
 
-    public float TurnTime;
-
     void Update()
     {
-        transform.position += agent.steerVector * Time.deltaTime * speed;
+        Vector3 newDirectionVector = agent.steerVector;
+        transform.position +=  new Vector3(newDirectionVector.x, 0f, newDirectionVector.z) * Time.deltaTime * speed;
         /*
          * get joystick using 
          * agent.JoystickVector;
