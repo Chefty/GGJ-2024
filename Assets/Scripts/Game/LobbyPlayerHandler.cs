@@ -2,7 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.InputSystem;
+using System.Linq;
 
 public class LobbyPlayerHandler : MonoBehaviour
 {
@@ -14,14 +14,17 @@ public class LobbyPlayerHandler : MonoBehaviour
     {
         LobbyManager.OnTransitionToGameMode += TransitionToGame;
         Ready.OnPlayerAwake += RegisterPlayer;
-        Ready.OnPlayerPressedReady += RegisterPlayer;
+        Ready.OnPlayerPressedReady += OnPlayerPressedReady;
         _playerInputToPlayerTransform = new Dictionary<Transform, bool>();
     }
 
-    private void OnDestroy()
+    private void OnDestroy() => UnsubscribeToEvents();
+
+    private void UnsubscribeToEvents()
     {
         LobbyManager.OnTransitionToGameMode -= TransitionToGame;
         Ready.OnPlayerAwake -= RegisterPlayer;
+        Ready.OnPlayerPressedReady -= OnPlayerPressedReady;
     }
 
     public void OnPlayerPressedReady(Transform player)
@@ -33,30 +36,24 @@ public class LobbyPlayerHandler : MonoBehaviour
 
     public void RegisterPlayer(Transform player)
     {
-        Debug.Log($"<color=green>RegisterPlayer {player.gameObject.name}</color>");
         _playerInputToPlayerTransform.Add(player, false);
+        SetupPlayerForLobby(player);
     }
 
     public void UnRegisterPlayer(Transform player)
     {
-        Debug.Log($"<color=red>UnRegisterPlayer {player.gameObject.name}</color>");
-
         _playerInputToPlayerTransform.Remove(player);
     }
 
     private void CheckIfAllPlayersReady()
     {
-        bool allPlayersReady = true;
-        foreach (var isReady in _playerInputToPlayerTransform.Values)
-        {
-            if (!isReady) allPlayersReady = false;
-        }
-
+        bool allPlayersReady = _playerInputToPlayerTransform.Where(x => !x.Value).Count() == 0;
         if (allPlayersReady) OnAllPlayersReady?.Invoke();
     }
 
     public void TransitionToGame()
     {
+        UnsubscribeToEvents();
         StartCoroutine(DoTransitionToGameMode());
     }
 
@@ -66,11 +63,18 @@ public class LobbyPlayerHandler : MonoBehaviour
         MovePlayersToLevel();
     }
 
+    private void SetupPlayerForLobby(Transform player)
+    {
+        Vector3 positionInLobby = AreaManager.Instance.GetRandomPositionInLobby();
+        player.position = new Vector3(positionInLobby.x, 2f, positionInLobby.z);
+    }
+
     private void MovePlayersToLevel()
     {
         foreach (var player in _playerInputToPlayerTransform)
         {
-            // TODO move all the players here if needed otherwise remove this function + subscription
+            Vector3 positionInPlayArea = AreaManager.Instance.GetRandomPositionInPlayArea();
+            player.Key.position = new Vector3(positionInPlayArea.x, 2f, positionInPlayArea.z);
         }
     }
 }
