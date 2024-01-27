@@ -3,7 +3,6 @@ using Character.Fart;
 using Character.Properties;
 using Character.Walk;
 using Game.GameWin;
-using Unity.VisualScripting;
 using UnityEngine;
 
 namespace Character.View
@@ -11,12 +10,18 @@ namespace Character.View
     public abstract class BaseCharacterView : MonoBehaviour, ICharacterView
     {
         public ICharacterProperties CharacterProperties => characterProperties ??= GetCharacterProperties();
+        public Transform Transform => transform;
         private ICharacterProperties characterProperties;
 
-        protected WalkAction walkAction = new();
-        protected FartAction fartAction = new(new NoMoreFartWinCondition());
-        protected CorkAction corkAction = new();
-        
+        protected WalkAction walkAction { get; } = new();
+        protected FartAction fartAction { get; } = new(new NoMoreFartWinCondition());
+        protected CorkAction corkAction { get; } = new();
+
+        public void StartFarting()
+        {
+            //Start the fart animation
+        }
+
         public void Fart(float amount)
         {
             Debug.Log("Prout: " + amount);
