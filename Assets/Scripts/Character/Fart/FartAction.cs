@@ -21,7 +21,6 @@ namespace Character.Fart
             }
 
             var amount = GameConstants.DEFAULT_FART_VALUE * secondsHolding;
-            Debug.LogWarning($"AMOUNT: {GameConstants.DEFAULT_FART_VALUE} * {secondsHolding} = {amount}");
             characterView.Fart(amount);
             
             if (!characterView.CharacterProperties.IsNpc)
