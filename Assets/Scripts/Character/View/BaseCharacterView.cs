@@ -24,13 +24,13 @@ namespace Character.View
 
         public void Fart(float amount)
         {
-            Debug.Log("Prout: " + amount);
             //Play sound, animation and start delay for fart fog
         }
 
         public void Walk(Vector3 direction)
         {
             transform.position += direction * CharacterProperties.Speed;
+            transform.forward = direction;
         }
 
         protected abstract ICharacterProperties GetCharacterProperties();
