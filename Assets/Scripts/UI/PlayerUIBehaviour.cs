@@ -27,8 +27,8 @@ namespace UI
 
         public void UpdateNeedleRotation(float gaugePercentage)
         {
-            var targetRotation = Mathf.Lerp(_gaugeEmptyToFullRotation.x, _gaugeEmptyToFullRotation.y, gaugePercentage);
-            _gaugeNeedle.DOLocalRotate(new Vector3(0, 0, targetRotation), secondsToRotate).SetEase(Ease.InOutBounce);
+            var targetRotation = Mathf.Lerp(_gaugeEmptyToFullRotation.x, _gaugeEmptyToFullRotation.y, 1 - gaugePercentage);
+            _gaugeNeedle.DOLocalRotate(new Vector3(0, 0, targetRotation), secondsToRotate).SetEase(Ease.OutQuad);
             currentPercentage = gaugePercentage;
         }
     }

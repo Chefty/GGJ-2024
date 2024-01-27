@@ -117,7 +117,7 @@ namespace Character.View
             {
                 StopCoroutine(holdFartCoroutine);
                 holdFartCoroutine = null;
-                Fart(holdFartTimer);
+                fartAction.Execute(this, holdFartTimer);
                 holdFartTimer = 1f;
                 isFarting = false;
             }
