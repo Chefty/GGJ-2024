@@ -21,6 +21,7 @@ namespace Character.View
         private Coroutine holdFartCoroutine = null;
         private float holdFartTimer = 1f;
         private Vector3 moveDirection;
+        private bool isFarting = false;
         
         private PlayerControls playerControls;
 
@@ -38,7 +39,7 @@ namespace Character.View
 
         private void Update()
         {
-            if (moveDirection != Vector3.zero)
+            if (moveDirection != Vector3.zero && !isFarting)
             {
                 MoveRelativeToMainCamera();
             }
@@ -109,6 +110,7 @@ namespace Character.View
         {
             if (context.started && holdFartCoroutine == null)
             {
+                isFarting = true;
                 holdFartCoroutine = StartCoroutine(HoldButtonRoutine());
             }
             else if (context.canceled && holdFartCoroutine != null)
@@ -117,6 +119,7 @@ namespace Character.View
                 holdFartCoroutine = null;
                 Fart(holdFartTimer);
                 holdFartTimer = 1f;
+                isFarting = false;
             }
 
             IEnumerator HoldButtonRoutine()
