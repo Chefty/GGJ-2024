@@ -37,7 +37,7 @@ namespace Character.Properties
         public void DecrementFart(float amount)
         {
             fartAmount -= amount;
-            playerUIBehaviour.UpdateNeedleRotation(fartAmount);
+            playerUIBehaviour.UpdateNeedleRotation(fartAmount / 100f);
         }
 
         public void RemoveCork()

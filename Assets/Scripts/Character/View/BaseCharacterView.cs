@@ -24,7 +24,7 @@ namespace Character.View
 
         public void Fart(float amount)
         {
-            Debug.Log("Prout: " + amount);
+            //Debug.Log("Prout: " + amount);
             //Play sound, animation and start delay for fart fog
         }
 

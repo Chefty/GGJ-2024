@@ -1,4 +1,5 @@
 using System.Collections;
+using DG.Tweening;
 using UnityEngine;
 
 namespace UI
@@ -7,8 +8,8 @@ namespace UI
     {
         [SerializeField] private RectTransform _gaugeNeedle;
         [SerializeField] private GameObject _cork;
-        [SerializeField] private float _rotationSpeed;
-        private readonly Vector2 _gaugeEmptyToFullRotation = new Vector2(-90f, 0f);
+        [SerializeField] private float secondsToRotate = 0.5f;
+        private readonly Vector2 _gaugeEmptyToFullRotation = new Vector2(0f, -90f);
 
         private float currentPercentage = 0f;
 
@@ -26,22 +27,9 @@ namespace UI
 
         public void UpdateNeedleRotation(float gaugePercentage)
         {
-            StartCoroutine(UpdateNeedle(gaugePercentage));
+            var targetRotation = Mathf.Lerp(_gaugeEmptyToFullRotation.x, _gaugeEmptyToFullRotation.y, gaugePercentage);
+            _gaugeNeedle.DOLocalRotate(new Vector3(0, 0, targetRotation), secondsToRotate).SetEase(Ease.InOutBounce);
             currentPercentage = gaugePercentage;
-        }
-
-        private IEnumerator UpdateNeedle(float gaugePercentage) // percentage between 0 and 1f
-        {
-            float targetRotation = Mathf.Lerp(_gaugeEmptyToFullRotation.x, _gaugeEmptyToFullRotation.y, gaugePercentage);
-            float currentRotation = Mathf.Lerp(_gaugeEmptyToFullRotation.x, _gaugeEmptyToFullRotation.y, currentPercentage);
-            float ellapsedTime = 0f;
-
-            while (ellapsedTime < _rotationSpeed)
-            {
-                _gaugeNeedle.localRotation = Quaternion.Euler(_gaugeNeedle.eulerAngles.x, _gaugeNeedle.eulerAngles.y, Mathf.Lerp(currentRotation, targetRotation, ellapsedTime / _rotationSpeed));
-                yield return new WaitForEndOfFrame();
-                ellapsedTime += Time.deltaTime;
-            }
         }
     }
 }
