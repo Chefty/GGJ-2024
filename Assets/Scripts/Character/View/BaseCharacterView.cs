@@ -13,13 +13,13 @@ namespace Character.View
         public ICharacterProperties CharacterProperties => characterProperties ??= GetCharacterProperties();
         private ICharacterProperties characterProperties;
 
-        protected WalkAction walkAction = new WalkAction();
-        protected FartAction fartAction = new FartAction(new NoMoreFartWinCondition());
-        protected CorkAction corkAction = new CorkAction();
+        protected WalkAction walkAction = new();
+        protected FartAction fartAction = new(new NoMoreFartWinCondition());
+        protected CorkAction corkAction = new();
         
         public void Fart(float amount)
         {
-            throw new System.NotImplementedException();
+            Debug.Log("Prout: " + amount);
             //Play sound, animation and start delay for fart fog
         }
 

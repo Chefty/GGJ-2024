@@ -1,15 +1,22 @@
+using System;
+using System.Collections;
+using System.Linq.Expressions;
 using Character.Properties;
-using Character.Walk;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
 namespace Character.View
 {
+    [RequireComponent(typeof(PlayerInput))]
     public class PlayerCharacterView : BaseCharacterView
     {
-        private PlayerControls playerControls;
+        private readonly WaitForSeconds secondDelay = new(1f);
+        private Coroutine holdFartCoroutine = null;
+        private float holdFartCounter;
+        protected PlayerControls playerControls;
 
-        private void Start() {
+        private void Awake() 
+        {
             playerControls = new PlayerControls();
             playerControls.Enable();
         }
@@ -19,23 +26,38 @@ namespace Character.View
             return CharacterPropertiesFactory.Get(false);
         }
 
-        void OnMove(InputValue inputValue)
+        public void OnMove(InputAction.CallbackContext context)
         {
-            var move = inputValue.Get<Vector2>();
+            var move = context.ReadValue<Vector2>();
             var direction = new Vector3(move.x, 0, move.y);
-            Debug.Log("MOVE:" + direction);
             walkAction.Execute(this, direction);
         }
 
-        void OnAttack()
+        public void OnAttack(InputAction.CallbackContext context)
         {
             corkAction.Execute(this, null);
         }
 
-        void OnFart()
+        public void OnFart(InputAction.CallbackContext context)
         {
-            //TODO stack fart percentage on hold, call action on release.
-            fartAction.Execute(this, .1f);
+            if(context.started && holdFartCoroutine == null)
+            {
+                holdFartCoroutine = StartCoroutine(HoldButtonRoutine());
+            }
+
+            return;
+
+            IEnumerator HoldButtonRoutine()
+            {
+                yield return new WaitUntil(context.ReadValueAsButton);
+                while (context.ReadValueAsButton())
+                {
+                    yield return secondDelay;
+                    holdFartCounter += 3f;
+                }
+                fartAction.Execute(this, holdFartCounter);
+                holdFartCoroutine = null;
+            }
         }
     }
 }
