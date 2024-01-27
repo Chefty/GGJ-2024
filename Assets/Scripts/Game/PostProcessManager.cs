@@ -25,6 +25,6 @@ public class PostProcessManager : MonoBehaviour
     {
         _fadeImage.gameObject.SetActive(true);
         yield return new WaitForSeconds(LobbyManager.fadeDuration);
-        _fadeImage.gameObject.SetActive(true);
+        _fadeImage.gameObject.SetActive(false);
     }
 }

@@ -7,6 +7,16 @@ public class LobbyManager : MonoBehaviour
 
     public static event Action OnTransitionToGameMode;
 
+    private void Awake()
+    {
+        LobbyPlayerHandler.OnAllPlayersReady += TransitionToGame;
+    }
+
+    private void OnDestroy()
+    {
+        LobbyPlayerHandler.OnAllPlayersReady -= TransitionToGame;
+    }
+
     [ContextMenu("TransitionToGame")]
     public void TransitionToGame()
     {
