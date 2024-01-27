@@ -45,7 +45,7 @@ namespace Character.View
             return CharacterPropertiesFactory.Get(false);
         }
 
-#region PlayerInputActions
+        #region PlayerInputActions
 
         public void OnMove(InputAction.CallbackContext context)
         {
@@ -60,7 +60,7 @@ namespace Character.View
 
         public void OnFart(InputAction.CallbackContext context)
         {
-            if(context.started && holdFartCoroutine == null)
+            if (context.started && holdFartCoroutine == null)
             {
                 StartFarting();
                 holdFartCoroutine = StartCoroutine(HoldButtonRoutine());

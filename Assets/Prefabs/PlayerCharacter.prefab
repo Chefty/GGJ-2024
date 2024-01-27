@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 7410970493366977153}
   - component: {fileID: 3478155056225461116}
   - component: {fileID: 1306259085248415636}
+  - component: {fileID: 1857939380270045912}
   m_Layer: 0
   m_Name: PlayerCharacter
   m_TagString: Untagged
@@ -159,6 +160,22 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: ed9f7a29-3dcf-4701-a056-64b37f70223f
     m_ActionName: Player/Attack[/XInputControllerWindows/buttonEast]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1857939380270045912}
+        m_TargetAssemblyTypeName: Ready, Assembly-CSharp
+        m_MethodName: OnPressedReady
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: d62517ff-52dd-445d-8577-51d84eb3019f
+    m_ActionName: Player/Start
   m_NeverAutoSwitchControlSchemes: 1
   m_DefaultControlScheme: Gamepad Control Scheme
   m_DefaultActionMap: Player
@@ -174,5 +191,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 572cf28ada844d0e94ea3f28a3cb34a9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1857939380270045912
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5318177828686233146}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 04f935760a2b69144bb4e53472e3ab5b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
