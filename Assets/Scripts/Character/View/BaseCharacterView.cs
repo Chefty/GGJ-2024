@@ -13,9 +13,9 @@ namespace Character.View
         public Transform Transform => transform;
         private ICharacterProperties characterProperties;
 
-        public WalkAction WalkAction { get; } = new();
-        public FartAction FartAction { get; } = new(new NoMoreFartWinCondition());
-        public CorkAction CorkAction { get; } = new();
+        protected WalkAction walkAction { get; } = new();
+        protected FartAction fartAction { get; } = new(new NoMoreFartWinCondition());
+        protected CorkAction corkAction { get; } = new();
 
         public void StartFarting()
         {
