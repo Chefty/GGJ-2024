@@ -1,5 +1,6 @@
 using System.Collections;
 using Character.Properties;
+using UI;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -8,16 +9,25 @@ namespace Character.View
     [RequireComponent(typeof(PlayerInput))]
     public class PlayerCharacterView : BaseCharacterView
     {
+        private static int UserIdCounter = 0;
+        
         private readonly WaitForSeconds secondDelay = new(1f);
         private Coroutine holdFartCoroutine = null;
         private float holdFartCounter;
         private Vector3 moveDirection;
-        protected PlayerControls playerControls;
+        
+        private PlayerControls playerControls;
 
+        private int userId;
+        
         private void Awake() 
         {
             playerControls = new PlayerControls();
             playerControls.Enable();
+            
+            userId = UserIdCounter++;
+
+            CharacterProperties.InjectUI(PlayersUI.Instance.GetUIBehaviourFor(userId));
         }
 
         private void Update()

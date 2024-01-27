@@ -1,3 +1,5 @@
+using UI;
+
 namespace Character.Properties
 {
     public interface ICharacterProperties
@@ -14,5 +16,6 @@ namespace Character.Properties
         void RemoveCork();
         void ApplyCork();
         void ResetApplyCork();
+        void InjectUI(PlayerUIBehaviour playerUIBehaviour);
     }
 }

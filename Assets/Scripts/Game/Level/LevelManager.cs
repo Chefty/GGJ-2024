@@ -15,16 +15,6 @@ namespace Game.Level
 
         private List<NpcCharacterView> allNpcs = new List<NpcCharacterView>();
         
-        private void Start()
-        {
-            aStartLevel();
-        }
-
-        private async UniTask aStartLevel()
-        {
-            await StartLevel();
-        }
-
         public async UniTask StartLevel()
         {
             DeleteAllNpcs();

@@ -1,3 +1,4 @@
+using UI;
 using UnityEngine;
 
 namespace Character.Properties
@@ -17,6 +18,7 @@ namespace Character.Properties
         private float fartAmount;
 
         private float maximiumFartAmount;
+        private PlayerUIBehaviour playerUIBehaviour;
 
         public CharacterProperties(bool isNpc, float fartAmount, float speed, int corks)
         {
@@ -29,16 +31,19 @@ namespace Character.Properties
         public void IncrementFart(float amount)
         {
             fartAmount = Mathf.Min(fartAmount + amount, maximiumFartAmount);
+            playerUIBehaviour.UpdateNeedleRotation(fartAmount);
         }
 
         public void DecrementFart(float amount)
         {
             fartAmount -= amount;
+            playerUIBehaviour.UpdateNeedleRotation(fartAmount);
         }
 
         public void RemoveCork()
         {
             corks -= 1;
+            playerUIBehaviour.OnUseCork();
         }
 
         public void ApplyCork()
@@ -49,6 +54,12 @@ namespace Character.Properties
         public void ResetApplyCork()
         {
             IsCorked = false;
+        }
+
+        public void InjectUI(PlayerUIBehaviour playerUIBehaviour)
+        {
+            this.playerUIBehaviour = playerUIBehaviour;
+            playerUIBehaviour.gameObject.SetActive(true);
         }
     }
 }
