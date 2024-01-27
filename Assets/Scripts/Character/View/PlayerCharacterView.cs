@@ -30,18 +30,19 @@ namespace Character.View
         {
             var move = context.ReadValue<Vector2>();
             var direction = new Vector3(move.x, 0, move.y);
-            walkAction.Execute(this, direction);
+            WalkAction.Execute(this, direction);
         }
 
         public void OnAttack(InputAction.CallbackContext context)
         {
-            corkAction.Execute(this, null);
+            CorkAction.Execute(this, null);
         }
 
         public void OnFart(InputAction.CallbackContext context)
         {
             if(context.started && holdFartCoroutine == null)
             {
+                StartFarting();
                 holdFartCoroutine = StartCoroutine(HoldButtonRoutine());
             }
 
@@ -55,7 +56,7 @@ namespace Character.View
                     yield return secondDelay;
                     holdFartCounter += 3f;
                 }
-                fartAction.Execute(this, holdFartCounter);
+                FartAction.Execute(this, holdFartCounter);
                 holdFartCoroutine = null;
             }
         }
