@@ -1,4 +1,9 @@
+using Character.Cork;
+using Character.Fart;
 using Character.Properties;
+using Character.Walk;
+using Game.GameWin;
+using Unity.VisualScripting;
 using UnityEngine;
 
 namespace Character.View
@@ -7,15 +12,20 @@ namespace Character.View
     {
         public ICharacterProperties CharacterProperties => characterProperties ??= GetCharacterProperties();
         private ICharacterProperties characterProperties;
+
+        protected WalkAction walkAction = new();
+        protected FartAction fartAction = new(new NoMoreFartWinCondition());
+        protected CorkAction corkAction = new();
         
         public void Fart(float amount)
         {
-            throw new System.NotImplementedException();
+            Debug.Log("Prout: " + amount);
+            //Play sound, animation and start delay for fart fog
         }
 
-        public void Walk(Vector2 direction)
+        public void Walk(Vector3 direction)
         {
-            
+            transform.position += direction * CharacterProperties.Speed;
         }
 
         protected abstract ICharacterProperties GetCharacterProperties();

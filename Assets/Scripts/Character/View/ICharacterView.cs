@@ -7,6 +7,6 @@ namespace Character.View
     {
         ICharacterProperties CharacterProperties { get; }
         void Fart(float amount);
-        void Walk(Vector2 direction);
+        void Walk(Vector3 direction);
     }
 }
