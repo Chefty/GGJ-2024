@@ -70,7 +70,7 @@ public class LobbyPlayerHandler : MonoBehaviour
     {
         player.name = $"Player {_playerInputToPlayerTransform.Count}";
         Vector3 positionInLobby = AreaManager.Instance.GetRandomPositionInLobby();
-        player.position = new Vector3(positionInLobby.x, 2f, positionInLobby.z);
+        player.position = new Vector3(positionInLobby.x, 0f, positionInLobby.z);
         _labels.Add(Instantiate(_playerNameLabelPrefab));
         _labels.Last().transform.SetParent(player);
         _labels.Last().transform.localPosition = Vector3.up * 3f;
@@ -82,7 +82,7 @@ public class LobbyPlayerHandler : MonoBehaviour
         foreach (var player in _playerInputToPlayerTransform)
         {
             Vector3 positionInPlayArea = AreaManager.Instance.GetRandomPositionInPlayArea();
-            player.Key.position = new Vector3(positionInPlayArea.x, 2f, positionInPlayArea.z);
+            player.Key.position = new Vector3(positionInPlayArea.x, 0f, positionInPlayArea.z);
         }
 
         foreach (var label in _labels)

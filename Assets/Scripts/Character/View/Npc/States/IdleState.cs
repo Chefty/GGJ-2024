@@ -18,6 +18,7 @@ namespace Character.View.Npc.States
         public void Start(ICharacterView characterView)
         {
             endTime = Time.realtimeSinceStartup + Random.Range(MIN_SECONDS_IDLING, MAX_SECONDS_IDLING);
+            characterView.Walk(Vector3.zero);
         }
 
         public bool Execute(ICharacterView characterView)

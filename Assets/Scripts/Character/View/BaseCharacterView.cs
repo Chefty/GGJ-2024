@@ -15,6 +15,7 @@ namespace Character.View
         public Transform Transform => transform;
         private ICharacterProperties characterProperties;
 
+        [SerializeField] protected Animator characterAnimator;
         [SerializeField] private RectTransform corkImage;
 
         protected WalkAction walkAction { get; } = new();
@@ -28,19 +29,19 @@ namespace Character.View
         
         public void StartFarting()
         {
-            //Start the fart animation
+            characterAnimator.SetBool("Hold Fart", true);
         }
 
         public void Fart(float amount)
         {
             GameObject instance = (GameObject)Instantiate(Resources.Load("Fart Volume Fog"));
             instance.GetComponent<FartBehaviour>().IsFartBig = amount > GameConstants.DEFAULT_FART_VALUE;
-            Debug.Log(amount);
             instance.transform.position = transform.position;
             instance.SetActive(true);
+            characterAnimator.SetBool("Hold Fart", false);
         }
 
-        public void Walk(Vector3 direction)
+        public virtual void Walk(Vector3 direction)
         {
             transform.position += direction * CharacterProperties.Speed;
             transform.forward = direction;
@@ -49,6 +50,7 @@ namespace Character.View
         public void OnCorked()
         {
             corkImage.DOScale(1, 0.5f).SetEase(Ease.OutBack);
+            characterAnimator.SetTrigger("IsCorked");
         }
 
         public void OnUncorked()

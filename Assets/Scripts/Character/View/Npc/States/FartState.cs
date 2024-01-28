@@ -20,6 +20,7 @@ namespace Character.View.Npc.States
         
         public void Start(ICharacterView characterView)
         {
+            characterView.Walk(Vector3.zero);
             shortFart = Random.value <= PROBABILITY_OF_QUICK_FART;
             longFartLength = Random.Range(MIN_SECONDS_LONG_FART, GameConstants.MAX_SECONDS_FARTING);
             endTime = Time.realtimeSinceStartup + longFartLength;
