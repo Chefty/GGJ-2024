@@ -7,7 +7,11 @@ namespace Character.Walk
     {
         public void Execute(ICharacterView characterView, Vector3 direction)
         {
-            characterView.Walk(direction);
+            var newPosition = characterView.Transform.position + direction * characterView.CharacterProperties.Speed;
+            if (AreaManager.Instance.IsPositionInBounds(newPosition))
+            {
+                characterView.Walk(direction);    
+            }
         }
     }
 }

@@ -28,4 +28,9 @@ public class AreaManager : MonoBehaviour
     {
         return new Vector3(Random.Range(bound.min.x, bound.max.x), Random.Range(bound.min.y, bound.max.y), Random.Range(bound.min.z, bound.max.z));
     }
+
+    public bool IsPositionInBounds(Vector3 position)
+    {
+        return _gameArea.bounds.Contains(position);
+    }
 }
