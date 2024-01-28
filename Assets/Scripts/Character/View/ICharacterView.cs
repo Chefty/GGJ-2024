@@ -11,5 +11,7 @@ namespace Character.View
         void StartFarting();
         void Fart(float amount);
         void Walk(Vector3 direction);
+        void OnCorked();
+        void OnUncorked();
     }
 }

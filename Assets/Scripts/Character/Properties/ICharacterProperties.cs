@@ -6,6 +6,7 @@ namespace Character.Properties
     {
         bool IsNpc { get; }
         float Speed { get; }
+        float LastTimeFarted { get; }
         float FartAmount { get; }
         bool IsCorked { get; }
         bool HasCork { get; }
@@ -17,5 +18,6 @@ namespace Character.Properties
         void ApplyCork();
         void ResetApplyCork();
         void InjectUI(PlayerUIBehaviour playerUIBehaviour);
+        void SetLastFartTime(float time);
     }
 }

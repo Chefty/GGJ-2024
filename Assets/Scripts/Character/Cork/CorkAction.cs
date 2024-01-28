@@ -1,4 +1,3 @@
-using System.Diagnostics;
 using System.Threading.Tasks;
 using Character.View;
 
@@ -6,26 +5,35 @@ namespace Character.Cork
 {
     public class CorkAction
     {
-        private const int CORK_MILLISECONDS = 5000;
-        
         public void Execute(ICharacterView actorCharacter, ICharacterView[] affectedCharacters)
         {
+            if (affectedCharacters.Length == 0 || !CanCork(actorCharacter))
+            {
+                return;
+            }
+            
             actorCharacter.CharacterProperties.RemoveCork();
             foreach (var affectedCharacter in affectedCharacters)
             {
+                affectedCharacter.OnCorked();
                 affectedCharacter.CharacterProperties.ApplyCork();
-                UnityEngine.Debug.Log("Player " + affectedCharacter.Transform.gameObject.name + "got corked!");
             }
 
             WaitAndResetAppliedCork(affectedCharacters);
         }
 
+        private bool CanCork(ICharacterView actorCharacter)
+        {
+            return !actorCharacter.CharacterProperties.IsCorked;
+        }
+
         private async Task WaitAndResetAppliedCork(ICharacterView[] affectedCharacters)
         {
-            await Task.Delay(CORK_MILLISECONDS);
+            await Task.Delay((int)(GameConstants.CORK_TIME * GameConstants.MILLISECOND));
             
             foreach (var affectedCharacter in affectedCharacters)
             {
+                affectedCharacter.OnUncorked();
                 affectedCharacter.CharacterProperties.ResetApplyCork();
             }
         }

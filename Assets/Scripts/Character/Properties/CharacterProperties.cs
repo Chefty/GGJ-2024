@@ -7,13 +7,15 @@ namespace Character.Properties
     {
         public bool IsNpc { get; }
         public float Speed { get; }
-        
+        public float LastTimeFarted { get; private set; }
+
         public bool IsCorked { get; private set; }
 
         public bool HasCork => Corks > 0;
         public int Corks => corks;
         private int corks;
-        
+
+        private float FartPercentage => FartAmount / 100f;
         public float FartAmount => fartAmount;
         private float fartAmount;
 
@@ -37,7 +39,7 @@ namespace Character.Properties
         public void DecrementFart(float amount)
         {
             fartAmount -= amount;
-            playerUIBehaviour.UpdateNeedleRotation(fartAmount / 100f);
+            playerUIBehaviour.UpdateNeedleRotation(FartPercentage);
         }
 
         public void RemoveCork()
@@ -60,6 +62,18 @@ namespace Character.Properties
         {
             this.playerUIBehaviour = playerUIBehaviour;
             playerUIBehaviour.gameObject.SetActive(true);
+            
+            LobbyManager.OnTransitionToGameMode += ResetPlayerUI;
+        }
+
+        public void SetLastFartTime(float time)
+        {
+            LastTimeFarted = time;
+        }
+
+        private void ResetPlayerUI()
+        {
+            playerUIBehaviour.UpdateNeedleRotation(FartPercentage);
         }
     }
 }
