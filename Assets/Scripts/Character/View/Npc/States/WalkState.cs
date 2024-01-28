@@ -27,7 +27,6 @@ namespace Character.View.Npc.States
                 Random.Range(MIN_BOUNDS.y, MAX_BOUNDS.y));
 
             direction = (endPosition - characterView.Transform.position).normalized;
-            Debug.LogWarning(endPosition, characterView.Transform);
         }
 
         public bool Execute(ICharacterView characterView)

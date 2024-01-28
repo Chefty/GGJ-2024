@@ -31,6 +31,6 @@ public class AreaManager : MonoBehaviour
 
     public bool IsPositionInBounds(Vector3 position)
     {
-        return _gameArea.bounds.Contains(position);
+        return _playAreaBounds.Contains(position) || _lobbyBounds.Contains(position);
     }
 }
