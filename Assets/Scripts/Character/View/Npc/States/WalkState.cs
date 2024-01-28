@@ -10,8 +10,8 @@ namespace Character.View.Npc.States
 
         public NextState[] NextStates => new[]
         {
-            new NextState(0.5f, new IdleState()),
-            new NextState(0.5f, new FartState())
+            new NextState(0.97f, new IdleState()),
+            new NextState(0.03f, new FartState())
         };
 
         private Vector3 endPosition;

@@ -9,8 +9,8 @@ namespace Character.View.Npc.States
             
         public NextState[] NextStates => new[]
         {
-            new NextState(0.7f, new WalkState()),
-            new NextState(0.3f, new FartState())
+            new NextState(0.95f, new WalkState()),
+            new NextState(0.05f, new FartState())
         };
 
         private float endTime;
