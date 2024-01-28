@@ -12,6 +12,8 @@ namespace Character.View
     public class PlayerCharacterView : BaseCharacterView
     {
         private static int UserIdCounter = 0;
+        
+        public int UserId { get; private set; }
 
         [SerializeField] private float detectionRange = 2f;
         [SerializeField] private float sphereRadius = 2f;
@@ -25,8 +27,6 @@ namespace Character.View
         
         private PlayerControls playerControls;
 
-        private int userId;
-
         protected override void Awake() 
         {
             base.Awake();
@@ -34,9 +34,9 @@ namespace Character.View
             playerControls = new PlayerControls();
             playerControls.Enable();
             
-            userId = UserIdCounter++;
+            UserId = UserIdCounter++;
 
-            CharacterProperties.InjectUI(PlayersUI.Instance.GetUIBehaviourFor(userId));
+            CharacterProperties.InjectUI(PlayersUI.Instance.GetUIBehaviourFor(UserId));
         }
 
         private void Update()
