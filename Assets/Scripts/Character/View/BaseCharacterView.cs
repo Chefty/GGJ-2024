@@ -25,7 +25,8 @@ namespace Character.View
         public void Fart(float amount)
         {
             GameObject instance = (GameObject)Instantiate(Resources.Load("Fart Volume Fog"));
-            instance.GetComponent<FartBehaviour>().IsFartBig = amount > 1f;
+            instance.GetComponent<FartBehaviour>().IsFartBig = amount > GameConstants.DEFAULT_FART_VALUE;
+            Debug.Log(amount);
             instance.transform.position = transform.position;
             instance.SetActive(true);
         }
