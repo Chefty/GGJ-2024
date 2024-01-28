@@ -1,4 +1,3 @@
-using System.Diagnostics;
 using System.Threading.Tasks;
 using Character.View;
 
@@ -16,6 +15,7 @@ namespace Character.Cork
             actorCharacter.CharacterProperties.RemoveCork();
             foreach (var affectedCharacter in affectedCharacters)
             {
+                affectedCharacter.OnCorked();
                 affectedCharacter.CharacterProperties.ApplyCork();
             }
 
@@ -28,6 +28,7 @@ namespace Character.Cork
             
             foreach (var affectedCharacter in affectedCharacters)
             {
+                affectedCharacter.OnUncorked();
                 affectedCharacter.CharacterProperties.ResetApplyCork();
             }
         }

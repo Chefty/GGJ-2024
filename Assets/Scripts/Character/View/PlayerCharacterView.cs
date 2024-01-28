@@ -26,9 +26,11 @@ namespace Character.View
         private PlayerControls playerControls;
 
         private int userId;
-        
-        private void Awake() 
+
+        protected override void Awake() 
         {
+            base.Awake();
+            
             playerControls = new PlayerControls();
             playerControls.Enable();
             

@@ -82,6 +82,12 @@ PrefabInstance:
       insertIndex: 3
       addedObject: {fileID: 8988716911628689789}
   m_SourcePrefab: {fileID: 100100000, guid: c0be0fcd8ed4d43e497e31d70a2ca626, type: 3}
+--- !u!224 &278229599916651331 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 6698952128307146383, guid: c0be0fcd8ed4d43e497e31d70a2ca626,
+    type: 3}
+  m_PrefabInstance: {fileID: 6857589353151978956}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1650282986298188790 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 5318177828686233146, guid: c0be0fcd8ed4d43e497e31d70a2ca626,
@@ -100,3 +106,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c1d3b9b55b1a4555b009fbccd5cc57cf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  corkImage: {fileID: 278229599916651331}

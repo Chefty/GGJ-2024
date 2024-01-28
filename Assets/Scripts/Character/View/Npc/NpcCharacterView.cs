@@ -6,8 +6,10 @@ namespace Character.View.Npc
     {
         public StateMachine StateMachine { get; private set; }
 
-        private void Awake()
+        protected override void Awake()
         {
+            base.Awake();
+            
             StateMachine = new StateMachine(this);
         }
 
