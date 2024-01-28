@@ -7,7 +7,7 @@ namespace Character.Cork
     {
         public void Execute(ICharacterView actorCharacter, ICharacterView[] affectedCharacters)
         {
-            if (affectedCharacters.Length == 0)
+            if (affectedCharacters.Length == 0 || !CanCork(actorCharacter))
             {
                 return;
             }
@@ -20,6 +20,11 @@ namespace Character.Cork
             }
 
             WaitAndResetAppliedCork(affectedCharacters);
+        }
+
+        private bool CanCork(ICharacterView actorCharacter)
+        {
+            return !actorCharacter.CharacterProperties.IsCorked;
         }
 
         private async Task WaitAndResetAppliedCork(ICharacterView[] affectedCharacters)
