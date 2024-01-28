@@ -18,7 +18,7 @@ namespace Game.Level
 
         private void Awake()
         {
-            LobbyManager.OnTransitionToGameMode += DoStartLevel;
+            LobbyManager.OnStartCountDown += DoStartLevel;
         }
 
         private void DoStartLevel()
@@ -39,13 +39,6 @@ namespace Game.Level
 
             await UniTask.WaitUntil(() => allNpcs.All(x => x.StateMachine.IsReadyToStart));
 
-            var countDown = 3;
-            for (int i = 0; i < 3; i++)
-            {
-                Debug.LogWarning($"GAME IS STARTING IN {countDown--}");
-                await UniTask.Delay(1000);
-            }
-            
             allNpcs.ForEach(x => x.StateMachine.Start());
         }
 

@@ -34,7 +34,7 @@ namespace Character.View
 
         public void Fart(float amount)
         {
-            GameObject instance = (GameObject)Instantiate(Resources.Load("Fart Volume Fog"));
+            GameObject instance = (GameObject)Instantiate(Resources.Load("Fart Volume Fog 2"));
             instance.GetComponent<FartBehaviour>().IsFartBig = amount > GameConstants.DEFAULT_FART_VALUE;
             instance.transform.position = transform.position;
             instance.SetActive(true);
@@ -50,7 +50,7 @@ namespace Character.View
         public void OnCorked()
         {
             corkImage.DOScale(1, 0.5f).SetEase(Ease.OutBack);
-            characterAnimator.SetTrigger("IsCorked");
+            characterAnimator.SetTrigger("Corked");
         }
 
         public void OnUncorked()
