@@ -18,6 +18,21 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 6
       objectReference: {fileID: 0}
+    - target: {fileID: 6698952128307146383, guid: c0be0fcd8ed4d43e497e31d70a2ca626,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6698952128307146383, guid: c0be0fcd8ed4d43e497e31d70a2ca626,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6698952128307146383, guid: c0be0fcd8ed4d43e497e31d70a2ca626,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 9150861202389811163, guid: c0be0fcd8ed4d43e497e31d70a2ca626,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -106,4 +121,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c1d3b9b55b1a4555b009fbccd5cc57cf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  characterAnimator: {fileID: 0}
   corkImage: {fileID: 278229599916651331}

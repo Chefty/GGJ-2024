@@ -45,6 +45,7 @@ namespace Character.View
             {
                 MoveRelativeToMainCamera();
             }
+            characterAnimator.SetFloat("Input Magnitude", moveDirection.magnitude);
         }
 
         private void MoveRelativeToMainCamera()
@@ -105,6 +106,7 @@ namespace Character.View
             if (context.performed)
             {
                 corkAction.Execute(this, GetCharactersToCork());
+                characterAnimator.SetTrigger("Attack");
             }
         }
 
