@@ -63,10 +63,10 @@ namespace Character.View
             Gizmos.DrawWireSphere(transform.position + transform.forward * detectionRange, sphereRadius);
         }
 
-        private ICharacterView[] GetCharactersToAttack()
+        private ICharacterView[] GetCharactersToCork()
         {
-            List<NpcCharacterView> npcCharacterViewList = new();
-            Collider[] overlappingNPCs = Physics.OverlapSphere(transform.position + transform.forward * detectionRange, sphereRadius, characterLayer);
+            List<ICharacterView> npcCharacterViewList = new();
+            var overlappingNPCs = Physics.OverlapSphere(transform.position + transform.forward * detectionRange, sphereRadius, characterLayer);
 
             foreach (var npcCollider in overlappingNPCs)
             {
@@ -102,7 +102,7 @@ namespace Character.View
         {
             if (context.performed)
             {
-                corkAction.Execute(this, GetCharactersToAttack());
+                corkAction.Execute(this, GetCharactersToCork());
             }
         }
 
