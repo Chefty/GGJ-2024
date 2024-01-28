@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 public class LobbyAssetManager : MonoBehaviour
@@ -16,6 +17,12 @@ public class LobbyAssetManager : MonoBehaviour
 
     private void DisableLobbyAssets()
     {
+        StartCoroutine(DisplayCountdown());
+    }
+
+    private IEnumerator DisplayCountdown()
+    {
+        yield return new WaitForSeconds(LobbyManager.fadeDuration / 2f);
         for (int i = 0; i < _assetsToDisable.Length; i++)
         {
             _assetsToDisable[i].SetActive(false);

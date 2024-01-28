@@ -322,7 +322,7 @@ GameObject:
   - component: {fileID: 5020789807702356297}
   - component: {fileID: 3256502217128771500}
   m_Layer: 0
-  m_Name: PostProcessingManager
+  m_Name: LobbyToElevatorTransitionManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -355,7 +355,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 18767fe635df44e45b1ee3a31f8a627b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _fadeImage: {fileID: 0}
+  _rect: {fileID: 0}
+  _stripeRect: {fileID: 0}
+  _fullscreenVHSMaterial: {fileID: 2100000, guid: 68f2fbeb83c2e914ebcc08aa856fb99b,
+    type: 2}
 --- !u!1001 &5578713092403235435
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -1,4 +1,5 @@
 using System.Collections;
+using System.Linq;
 using UnityEngine;
 
 public class LobbyElevatorScript : MonoBehaviour
@@ -8,11 +9,13 @@ public class LobbyElevatorScript : MonoBehaviour
     public float beginDistance = 0f;
     [SerializeField] private float _timeBetweenScrolls;
     [SerializeField] private TMPro.TMP_Text _text;
-    private readonly string _defaultDisplayText = "Press start to get ready";
+    private readonly string _defaultDisplayText = "Press start to get ready.  ";
     private RectTransform _rect;
+    private bool _updateDisplay;
 
     void Start()
     {
+        _updateDisplay = true;
         LobbyManager.OnStartCountDown += UpdateElevatorCountdown;
         _rect = _text.GetComponent<RectTransform>();
         beginDistance = _rect.anchoredPosition.x;
@@ -26,15 +29,16 @@ public class LobbyElevatorScript : MonoBehaviour
 
     private void UpdateElevatorCountdown()
     {
+        _updateDisplay = false;
         StartCoroutine(DisplayCountdown());
     }
 
     private IEnumerator LedDisplayBehaviour()
     {
         _text.fontSize = 1.6f;
-        _text.text = _defaultDisplayText + _defaultDisplayText + _defaultDisplayText;
+        _text.text = _defaultDisplayText;
 
-        while (true)
+        while (_updateDisplay)
         {
             MoveText();
             yield return new WaitForSeconds(_timeBetweenScrolls);
@@ -43,17 +47,12 @@ public class LobbyElevatorScript : MonoBehaviour
 
     private void MoveText()
     {
-        Debug.Log(_rect.anchoredPosition.x);
-        _rect.anchoredPosition = new Vector2(_rect.anchoredPosition.x - moveDistance, _rect.anchoredPosition.y);
-
-        if (_rect.anchoredPosition.x > maxDistance)
-        {
-            _rect.anchoredPosition = new Vector2(beginDistance, _rect.anchoredPosition.y);
-        }
+        _text.text = string.Join("", _text.text.Skip(1)) + _text.text[0];
     }
 
     private IEnumerator DisplayCountdown()
     {
+        _text.alignment = TMPro.TextAlignmentOptions.CenterGeoAligned;
         _text.fontSize = 1.6f;
         _text.text = "READY ?";
         yield return new WaitForSeconds(1f);
