@@ -15,13 +15,14 @@ namespace Character.Fart
         
         public void Execute(ICharacterView characterView, float secondsHolding = 1f)
         {
-            if (characterView.CharacterProperties.IsCorked)
+            if (characterView.CharacterProperties.IsCorked || !CanFart(characterView))
             {
                 return;
             }
 
             var amount = GameConstants.DEFAULT_FART_VALUE * secondsHolding;
             characterView.Fart(amount);
+            characterView.CharacterProperties.SetLastFartTime(Time.realtimeSinceStartup);
             
             if (!characterView.CharacterProperties.IsNpc)
             {
@@ -32,6 +33,12 @@ namespace Character.Fart
             {
                 gameWinCondition.Execute(characterView);
             }
+        }
+
+        private bool CanFart(ICharacterView characterView)
+        {
+            return Time.realtimeSinceStartup - characterView.CharacterProperties.LastTimeFarted >=
+                   GameConstants.FART_COOLDOWN;
         }
 
         public static FartAction Get()

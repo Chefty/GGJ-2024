@@ -7,7 +7,8 @@ namespace Character.Properties
     {
         public bool IsNpc { get; }
         public float Speed { get; }
-        
+        public float LastTimeFarted { get; private set; }
+
         public bool IsCorked { get; private set; }
 
         public bool HasCork => Corks > 0;
@@ -63,6 +64,11 @@ namespace Character.Properties
             playerUIBehaviour.gameObject.SetActive(true);
             
             LobbyManager.OnTransitionToGameMode += ResetPlayerUI;
+        }
+
+        public void SetLastFartTime(float time)
+        {
+            LastTimeFarted = time;
         }
 
         private void ResetPlayerUI()
