@@ -75,13 +75,13 @@ ModelImporter:
     useFileScale: 1
     strictVertexDataChecks: 0
   tangentSpace:
-    normalSmoothAngle: 180
-    normalImportMode: 2
+    normalSmoothAngle: 71
+    normalImportMode: 1
     tangentImportMode: 2
-    normalCalculationMode: 4
+    normalCalculationMode: 0
     legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 0
-    blendShapeNormalImportMode: 2
-    normalSmoothingSource: 0
+    blendShapeNormalImportMode: 1
+    normalSmoothingSource: 2
   referencedClips: []
   importAnimation: 0
   humanDescription:

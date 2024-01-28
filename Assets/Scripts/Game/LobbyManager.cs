@@ -1,10 +1,13 @@
 using System;
+using System.Collections;
 using UnityEngine;
 
 public class LobbyManager : MonoBehaviour
 {
     public static float fadeDuration = 2f;
+    public static float lobbyAnimationDuration = 5f;
 
+    public static event Action OnStartCountDown;
     public static event Action OnTransitionToGameMode;
 
     private void Awake()
@@ -20,6 +23,13 @@ public class LobbyManager : MonoBehaviour
     [ContextMenu("TransitionToGame")]
     public void TransitionToGame()
     {
+        StartCoroutine(DoTransitionToGameMode());
+    }
+
+    private IEnumerator DoTransitionToGameMode()
+    {
+        OnStartCountDown?.Invoke();
+        yield return new WaitForSeconds(lobbyAnimationDuration);
         OnTransitionToGameMode?.Invoke();
     }
 }
