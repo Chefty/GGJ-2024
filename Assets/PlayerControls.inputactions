@@ -29,7 +29,7 @@
                     "id": "ed9f7a29-3dcf-4701-a056-64b37f70223f",
                     "expectedControlType": "Button",
                     "processors": "",
-                    "interactions": "Press(pressPoint=1)",
+                    "interactions": "",
                     "initialStateCheck": false
                 },
                 {
@@ -60,7 +60,7 @@
                     "path": "<Gamepad>/leftStick/up",
                     "interactions": "",
                     "processors": "",
-                    "groups": "General Control Scheme",
+                    "groups": "Gamepad Control Scheme",
                     "action": "Move",
                     "isComposite": false,
                     "isPartOfComposite": true
@@ -71,7 +71,7 @@
                     "path": "<Gamepad>/leftStick/down",
                     "interactions": "",
                     "processors": "",
-                    "groups": "General Control Scheme",
+                    "groups": "Gamepad Control Scheme",
                     "action": "Move",
                     "isComposite": false,
                     "isPartOfComposite": true
@@ -82,7 +82,7 @@
                     "path": "<Gamepad>/leftStick/left",
                     "interactions": "",
                     "processors": "",
-                    "groups": "General Control Scheme",
+                    "groups": "Gamepad Control Scheme",
                     "action": "Move",
                     "isComposite": false,
                     "isPartOfComposite": true
@@ -93,62 +93,7 @@
                     "path": "<Gamepad>/leftStick/right",
                     "interactions": "",
                     "processors": "",
-                    "groups": "General Control Scheme",
-                    "action": "Move",
-                    "isComposite": false,
-                    "isPartOfComposite": true
-                },
-                {
-                    "name": "2D Vector",
-                    "id": "36e0ebc9-523a-47fb-8eb1-e3b1b737b68f",
-                    "path": "2DVector",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Move",
-                    "isComposite": true,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "up",
-                    "id": "fb062c9f-ed03-4e74-94df-d57d2c112bb5",
-                    "path": "<Keyboard>/w",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "General Control Scheme",
-                    "action": "Move",
-                    "isComposite": false,
-                    "isPartOfComposite": true
-                },
-                {
-                    "name": "down",
-                    "id": "e984049a-bf95-461f-ae8d-965eab9e8bf4",
-                    "path": "<Keyboard>/s",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "General Control Scheme",
-                    "action": "Move",
-                    "isComposite": false,
-                    "isPartOfComposite": true
-                },
-                {
-                    "name": "left",
-                    "id": "7cbf7db9-3b6c-4de9-b759-3ea249c62dab",
-                    "path": "<Keyboard>/a",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "General Control Scheme",
-                    "action": "Move",
-                    "isComposite": false,
-                    "isPartOfComposite": true
-                },
-                {
-                    "name": "right",
-                    "id": "97916c47-d44b-4590-9234-73cc712dfb2b",
-                    "path": "<Keyboard>/d",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "General Control Scheme",
+                    "groups": "Gamepad Control Scheme",
                     "action": "Move",
                     "isComposite": false,
                     "isPartOfComposite": true
@@ -159,18 +104,7 @@
                     "path": "<Gamepad>/buttonSouth",
                     "interactions": "",
                     "processors": "",
-                    "groups": "General Control Scheme",
-                    "action": "Fart",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "efd8d97e-69b6-4970-9b39-6aac3fbaa330",
-                    "path": "<Keyboard>/f",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "General Control Scheme",
+                    "groups": "Gamepad Control Scheme",
                     "action": "Fart",
                     "isComposite": false,
                     "isPartOfComposite": false
@@ -181,18 +115,7 @@
                     "path": "<Gamepad>/buttonEast",
                     "interactions": "",
                     "processors": "",
-                    "groups": "General Control Scheme",
-                    "action": "Attack",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "7d0eb400-79af-4614-b347-e0fdecb7b604",
-                    "path": "<Keyboard>/space",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "General Control Scheme",
+                    "groups": "Gamepad Control Scheme",
                     "action": "Attack",
                     "isComposite": false,
                     "isPartOfComposite": false
@@ -203,18 +126,95 @@
                     "path": "<Gamepad>/start",
                     "interactions": "",
                     "processors": "",
-                    "groups": "General Control Scheme",
+                    "groups": "Gamepad Control Scheme",
                     "action": "Start",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
                 {
+                    "name": "2D Vector",
+                    "id": "27b12d0c-a8bf-46b0-a80a-5ec97340f079",
+                    "path": "2DVector",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Move",
+                    "isComposite": true,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "up",
+                    "id": "56401f44-f3cb-4358-ad44-d088590f4ef2",
+                    "path": "<Keyboard>/w",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard Control Scheme",
+                    "action": "Move",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "down",
+                    "id": "64f57f3f-2768-4b32-a155-3072089e6f8c",
+                    "path": "<Keyboard>/s",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard Control Scheme",
+                    "action": "Move",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "left",
+                    "id": "a4f14f55-43c1-4b9e-a600-f9cee095581f",
+                    "path": "<Keyboard>/a",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard Control Scheme",
+                    "action": "Move",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "right",
+                    "id": "68559bd6-423b-4667-9716-b1449375d20c",
+                    "path": "<Keyboard>/d",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard Control Scheme",
+                    "action": "Move",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
                     "name": "",
-                    "id": "146df47b-f997-4f5c-a8d5-c2a82eecd10e",
+                    "id": "7864ff8c-d639-47e9-8629-2f822732711d",
+                    "path": "<Keyboard>/f",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard Control Scheme",
+                    "action": "Fart",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "05068d0a-2312-4bf8-92dd-33282b1e728b",
+                    "path": "<Keyboard>/space",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard Control Scheme",
+                    "action": "Attack",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "97997dd5-8768-40b0-a43b-3a1d482ddb6d",
                     "path": "<Keyboard>/enter",
                     "interactions": "",
                     "processors": "",
-                    "groups": "General Control Scheme",
+                    "groups": "Keyboard Control Scheme",
                     "action": "Start",
                     "isComposite": false,
                     "isPartOfComposite": false
@@ -224,8 +224,8 @@
     ],
     "controlSchemes": [
         {
-            "name": "General Control Scheme",
-            "bindingGroup": "General Control Scheme",
+            "name": "Gamepad Control Scheme",
+            "bindingGroup": "Gamepad Control Scheme",
             "devices": [
                 {
                     "devicePath": "<XInputController>",
@@ -236,7 +236,13 @@
                     "devicePath": "<DualShockGamepad>",
                     "isOptional": true,
                     "isOR": false
-                },
+                }
+            ]
+        },
+        {
+            "name": "Keyboard Control Scheme",
+            "bindingGroup": "Keyboard Control Scheme",
+            "devices": [
                 {
                     "devicePath": "<Keyboard>",
                     "isOptional": false,
