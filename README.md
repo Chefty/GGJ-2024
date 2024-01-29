@@ -3,13 +3,6 @@
 
 <h4 align="center">A fun game about farts made with <a href="https://unity.com" target="_blank">Unity</a>.</h4>
 
-<p align="center">
-  <a href="#how-to-use">How To Use</a> •
-  <a href="#context">Context</a> •
-  <a href="#team">Team</a> •
-  <a href="#license">License</a>
-</p>
-
 # What is TITLE about ?
 <table>
 <tr>
@@ -55,7 +48,3 @@ This project has been made in 48 hours during the Global Game Jam 2024.<br>
 ## License
 
 This project is under MIT license.
-
----
-
-> GitHub [@Chefty](https://github.com/Chefty) &nbsp;&middot;&nbsp;
