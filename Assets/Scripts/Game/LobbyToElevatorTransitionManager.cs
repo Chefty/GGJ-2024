@@ -3,6 +3,7 @@ using UnityEngine.UI;
 using UnityEngine;
 using DG.Tweening;
 using UnityEngine.Rendering.Universal;
+using UnityEngine.Rendering;
 
 public class LobbyToElevatorTransitionManager : MonoBehaviour
 {
@@ -10,6 +11,7 @@ public class LobbyToElevatorTransitionManager : MonoBehaviour
     [SerializeField] private RectTransform _stripeRect;
     // vhs effect
     [SerializeField] private Material _fullscreenVHSMaterial;
+    public Volume volume; // Assign this in the inspector
 
     private float _cacheVHSIntensity;
 
@@ -20,6 +22,7 @@ public class LobbyToElevatorTransitionManager : MonoBehaviour
         _rect.gameObject.SetActive(false);
         _cacheVHSIntensity = _fullscreenVHSMaterial.GetFloat("_Intensity");
         _fullscreenVHSMaterial.SetFloat("_Intensity", 0f);
+        SetPostProcessingEffects(false);
     }
 
     private void OnDestroy()
@@ -41,6 +44,7 @@ public class LobbyToElevatorTransitionManager : MonoBehaviour
         });
         // we wait for the scene to change
         yield return new WaitForSeconds(LobbyManager.fadeDuration - 1f);
+        SetPostProcessingEffects(true);
         _fullscreenVHSMaterial.SetFloat("_Intensity", _cacheVHSIntensity);
         DOVirtual.Float(0f, 1, .5f, value =>
         {
@@ -50,5 +54,17 @@ public class LobbyToElevatorTransitionManager : MonoBehaviour
         {
             _rect.gameObject.SetActive(false);
         });
+    }
+
+    private void SetPostProcessingEffects(bool value)
+    {
+        if (volume.profile.TryGet(out LensDistortion lensDistortion))
+        {
+            lensDistortion.active = value;
+        }
+        if (volume.profile.TryGet(out ChromaticAberration chromaticAberation))
+        {
+            chromaticAberation.active = value;
+        }
     }
 }

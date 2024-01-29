@@ -28,6 +28,7 @@ public class LobbyManager : MonoBehaviour
 
     private IEnumerator DoTransitionToGameMode()
     {
+        LobbyPlayerHandler.OnAllPlayersReady -= TransitionToGame;
         OnStartCountDown?.Invoke();
         yield return new WaitForSeconds(lobbyAnimationDuration);
         OnTransitionToGameMode?.Invoke();
