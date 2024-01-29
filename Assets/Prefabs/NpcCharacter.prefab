@@ -11,7 +11,7 @@ PrefabInstance:
     - target: {fileID: 1785101284691642126, guid: 4375c0745e339354baa63c72b73b43f3,
         type: 3}
       propertyPath: m_Name
-      value: NPCCharacter
+      value: NpcCharacter
       objectReference: {fileID: 0}
     - target: {fileID: 1957372511090718646, guid: 4375c0745e339354baa63c72b73b43f3,
         type: 3}
@@ -27,6 +27,21 @@ PrefabInstance:
         type: 3}
       propertyPath: m_ActionEvents.Array.data[2].m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 2400569028951180218, guid: 4375c0745e339354baa63c72b73b43f3,
+        type: 3}
+      propertyPath: m_SizeDelta.x
+      value: -0.110000014
+      objectReference: {fileID: 0}
+    - target: {fileID: 2400569028951180218, guid: 4375c0745e339354baa63c72b73b43f3,
+        type: 3}
+      propertyPath: m_SizeDelta.y
+      value: -0.16
+      objectReference: {fileID: 0}
+    - target: {fileID: 4517951820994879649, guid: 4375c0745e339354baa63c72b73b43f3,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6950086227680661598, guid: 4375c0745e339354baa63c72b73b43f3,
         type: 3}
@@ -82,7 +97,8 @@ PrefabInstance:
     - {fileID: 3657044656683675615, guid: 4375c0745e339354baa63c72b73b43f3, type: 3}
     - {fileID: 1957372511090718646, guid: 4375c0745e339354baa63c72b73b43f3, type: 3}
     - {fileID: 2124717754360858388, guid: 4375c0745e339354baa63c72b73b43f3, type: 3}
-    m_RemovedGameObjects: []
+    m_RemovedGameObjects:
+    - {fileID: 4517951820994879649, guid: 4375c0745e339354baa63c72b73b43f3, type: 3}
     m_AddedGameObjects: []
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 1785101284691642126, guid: 4375c0745e339354baa63c72b73b43f3,

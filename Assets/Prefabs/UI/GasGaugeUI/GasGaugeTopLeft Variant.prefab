@@ -125,8 +125,23 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1396609569965490692, guid: d95dc4dccba5170429f85489e4a931e9,
         type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1396609569965490692, guid: d95dc4dccba5170429f85489e4a931e9,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1396609569965490692, guid: d95dc4dccba5170429f85489e4a931e9,
+        type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: -90
+      objectReference: {fileID: 0}
+    - target: {fileID: 4193607005677878512, guid: d95dc4dccba5170429f85489e4a931e9,
+        type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4193607005677878512, guid: d95dc4dccba5170429f85489e4a931e9,
         type: 3}
@@ -137,6 +152,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalRotation.z
       value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 4193607005677878512, guid: d95dc4dccba5170429f85489e4a931e9,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4193607005677878512, guid: d95dc4dccba5170429f85489e4a931e9,
         type: 3}
@@ -176,17 +196,17 @@ PrefabInstance:
     - target: {fileID: 4353777635643104542, guid: d95dc4dccba5170429f85489e4a931e9,
         type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.99965733
+      value: 0.99984777
       objectReference: {fileID: 0}
     - target: {fileID: 4353777635643104542, guid: d95dc4dccba5170429f85489e4a931e9,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.026176924
+      value: -0.01745245
       objectReference: {fileID: 0}
     - target: {fileID: 4353777635643104542, guid: d95dc4dccba5170429f85489e4a931e9,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: -3
+      value: -2
       objectReference: {fileID: 0}
     - target: {fileID: 4752500773725718532, guid: d95dc4dccba5170429f85489e4a931e9,
         type: 3}
