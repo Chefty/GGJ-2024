@@ -1,12 +1,11 @@
+using System.Collections.Generic;
 using Character.Cork;
 using Character.Fart;
 using Character.Properties;
 using Character.Walk;
 using DG.Tweening;
 using Game.GameWin;
-using Unity.VisualScripting;
 using UnityEngine;
-using UnityEngine.UI;
 
 namespace Character.View
 {
@@ -18,6 +17,7 @@ namespace Character.View
 
         [SerializeField] protected Animator characterAnimator;
         [SerializeField] private RectTransform corkImage;
+        [SerializeField] protected List<GameObject> models;
 
         protected WalkAction walkAction { get; } = new();
         protected FartAction fartAction { get; } = new(new NoMoreFartWinCondition());

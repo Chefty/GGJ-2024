@@ -26,7 +26,7 @@ public class FartBehaviour : MonoBehaviour
 
     private void InitFartSound()
     {
-        audioSource.pitch = Random.Range(0.5f, 1.5f);
+        audioSource.pitch = Random.Range(0.25f, 2f);
         Debug.Log(isBigFart);
         audioSource.PlayOneShot(isBigFart ? bigFartAudio : smallFartAudio);
     }

@@ -1,4 +1,5 @@
 using Character.Properties;
+using Game.Level;
 using UnityEngine;
 
 namespace Character.View.Npc
@@ -13,6 +14,11 @@ namespace Character.View.Npc
             base.Awake();
             
             StateMachine = new StateMachine(this);
+        }
+
+        private void OnEnable() 
+        {
+            SetNPCModel();
         }
 
         protected override ICharacterProperties GetCharacterProperties()
@@ -30,6 +36,19 @@ namespace Character.View.Npc
         {
             base.Walk(direction);
             moveDirection = direction;
-        }        
+        }
+
+        public void SetNPCModel()
+        {
+            var registeredPlayersModels = LevelManager.Instance.RegisteredPlayersData.PlayersModels;
+            var randomModelName = registeredPlayersModels[Random.Range(0, registeredPlayersModels.Count)];
+            foreach (var model in models)
+            {
+                if (model.name == randomModelName)
+                {
+                    model.SetActive(true);
+                }
+            }
+        }
     }
 }

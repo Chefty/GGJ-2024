@@ -1,8 +1,5 @@
-using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
 using Character.View.Npc;
 using Cysharp.Threading.Tasks;
 using UnityEngine;
@@ -11,14 +8,26 @@ namespace Game.Level
 {
     public class LevelManager : MonoBehaviour
     {
+        public static LevelManager Instance { get; private set; }
+
         [SerializeField] private int amountOfNpcs = 50;
         [SerializeField] private NpcCharacterView npcPrefab;
 
         private List<NpcCharacterView> allNpcs = new List<NpcCharacterView>();
 
+        public PlayersData RegisteredPlayersData;
+
         private void Awake()
         {
+            if (Instance != null && Instance != this)
+            {
+                Destroy(this);
+                return;
+            }
+            Instance = this;
+
             LobbyManager.OnStartCountDown += DoStartLevel;
+            RegisteredPlayersData = new();
         }
 
         private void DoStartLevel()

@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using Character.Properties;
 using Character.View.Npc;
 using Game.GameWin;
+using Game.Level;
 using TMPro;
 using UI;
 using UnityEngine;
@@ -15,22 +16,21 @@ namespace Character.View
     public class PlayerCharacterView : BaseCharacterView
     {
         private static int UserIdCounter = 0;
-        
-        public int UserId { get; private set; }
 
         [SerializeField] private float detectionRange = 2f;
         [SerializeField] private float sphereRadius = 2f;
         [SerializeField] private LayerMask characterLayer;
         [SerializeField] private TextMeshPro playerInfoText;
 
-        
         private readonly WaitForSeconds secondDelay = new(1f);
         private Coroutine holdFartCoroutine = null;
         private float holdFartTimer = 1f;
         private Vector3 moveDirection;
         private bool isFarting = false;
-        
         private PlayerControls playerControls;
+        private GameObject playerModel;
+
+        public int UserId { get; private set; }
 
         protected override void Awake() 
         {
@@ -156,6 +156,13 @@ namespace Character.View
                 playerInfoText.color = textColor;
                 Debug.Log(textColor);
             }
+        }
+
+        public void RegisterPlayerData()
+        {
+            playerModel = models[UnityEngine.Random.Range(0, models.Count)];
+            playerModel.SetActive(true);
+            LevelManager.Instance.RegisteredPlayersData.PlayersModels.Add(playerModel.name);
         }
         
 #endregion

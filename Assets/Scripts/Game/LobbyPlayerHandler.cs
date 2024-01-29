@@ -81,6 +81,7 @@ public class LobbyPlayerHandler : MonoBehaviour
         var playerCharacterView = player.GetComponent<PlayerCharacterView>();
         //TODO fix 3D text color misfit to pass playerColors as param here 
         playerCharacterView.SetPlayerInfoText(true, player.name);
+        playerCharacterView.RegisterPlayerData();
     }
 
     private void MovePlayersToLevel()
