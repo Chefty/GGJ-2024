@@ -57,7 +57,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6023227452586332772}
   m_Layer: 0
-  m_Name: Game
+  m_Name: GameManagers
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -135,8 +135,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 11.982544, y: 14.533237, z: 43.035515}
-  m_Center: {x: 38.570663, y: 7, z: -23.6548}
+  m_Size: {x: 16, y: 14.5, z: 38}
+  m_Center: {x: 41, y: 7, z: -23.5}
 --- !u!1 &5900788886450883506
 GameObject:
   m_ObjectHideFlags: 0
@@ -296,8 +296,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 63f3c77d9e34c774d8e5ab18b0d048ab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _playerNameLabelPrefab: {fileID: 705558992435023967, guid: 7d629b497c445b544bcf5970c431929c,
-    type: 3}
 --- !u!114 &2271941950298216002
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -442,81 +440,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 6023227452586332772}
     m_Modifications:
-    - target: {fileID: 321717073627947178, guid: 01189cec539eaab4fa7b5086e86fe65c,
-        type: 3}
-      propertyPath: m_NotificationBehavior
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 321717073627947178, guid: 01189cec539eaab4fa7b5086e86fe65c,
-        type: 3}
-      propertyPath: m_PlayerLeftEvent.m_PersistentCalls.m_Calls.Array.size
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 321717073627947178, guid: 01189cec539eaab4fa7b5086e86fe65c,
-        type: 3}
-      propertyPath: m_PlayerJoinedEvent.m_PersistentCalls.m_Calls.Array.size
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 321717073627947178, guid: 01189cec539eaab4fa7b5086e86fe65c,
-        type: 3}
-      propertyPath: m_PlayerLeftEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 321717073627947178, guid: 01189cec539eaab4fa7b5086e86fe65c,
-        type: 3}
-      propertyPath: m_PlayerJoinedEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 321717073627947178, guid: 01189cec539eaab4fa7b5086e86fe65c,
-        type: 3}
-      propertyPath: m_PlayerLeftEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 4701662440581345556}
-    - target: {fileID: 321717073627947178, guid: 01189cec539eaab4fa7b5086e86fe65c,
-        type: 3}
-      propertyPath: m_PlayerJoinedEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 4701662440581345556}
-    - target: {fileID: 321717073627947178, guid: 01189cec539eaab4fa7b5086e86fe65c,
-        type: 3}
-      propertyPath: m_PlayerLeftEvent.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 321717073627947178, guid: 01189cec539eaab4fa7b5086e86fe65c,
-        type: 3}
-      propertyPath: m_PlayerLeftEvent.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: UnRegisterPlayer
-      objectReference: {fileID: 0}
-    - target: {fileID: 321717073627947178, guid: 01189cec539eaab4fa7b5086e86fe65c,
-        type: 3}
-      propertyPath: m_PlayerJoinedEvent.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 321717073627947178, guid: 01189cec539eaab4fa7b5086e86fe65c,
-        type: 3}
-      propertyPath: m_PlayerJoinedEvent.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: RegisterPlayer
-      objectReference: {fileID: 0}
-    - target: {fileID: 321717073627947178, guid: 01189cec539eaab4fa7b5086e86fe65c,
-        type: 3}
-      propertyPath: m_PlayerLeftEvent.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: LobbyPlayerHandler, Assembly-CSharp
-      objectReference: {fileID: 0}
-    - target: {fileID: 321717073627947178, guid: 01189cec539eaab4fa7b5086e86fe65c,
-        type: 3}
-      propertyPath: m_PlayerJoinedEvent.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: LobbyPlayerHandler, Assembly-CSharp
-      objectReference: {fileID: 0}
-    - target: {fileID: 321717073627947178, guid: 01189cec539eaab4fa7b5086e86fe65c,
-        type: 3}
-      propertyPath: m_PlayerLeftEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
-      value: UnityEngine.InputSystem.PlayerInput, Unity.InputSystem
-      objectReference: {fileID: 0}
-    - target: {fileID: 321717073627947178, guid: 01189cec539eaab4fa7b5086e86fe65c,
-        type: 3}
-      propertyPath: m_PlayerJoinedEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
-      value: UnityEngine.InputSystem.PlayerInput, Unity.InputSystem
-      objectReference: {fileID: 0}
     - target: {fileID: 535452461922115220, guid: 01189cec539eaab4fa7b5086e86fe65c,
         type: 3}
       propertyPath: m_LocalPosition.x

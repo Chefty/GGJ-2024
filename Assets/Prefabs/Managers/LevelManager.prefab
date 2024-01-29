@@ -45,5 +45,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   amountOfNpcs: 15
-  npcPrefab: {fileID: 6933643996088399821, guid: e02da2a248cf28d449fa1ac79a27cf4e,
-    type: 3}
+  npcPrefab: {fileID: 39745535429804939, guid: e106a6063c8aaa845b25d5a54770ff42, type: 3}

@@ -5,8 +5,8 @@ namespace Character.View.Npc.States
 {
     public class FartState : IState
     {
-        private const float PROBABILITY_OF_QUICK_FART = 0.8f;
-        private const float MIN_SECONDS_LONG_FART = 2f;
+        private const float PROBABILITY_OF_QUICK_FART = 0.5f;
+        private const float MIN_SECONDS_LONG_FART = 3f;
         
         public NextState[] NextStates => new[]
         {

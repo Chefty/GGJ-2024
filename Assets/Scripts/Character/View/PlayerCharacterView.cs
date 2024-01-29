@@ -1,7 +1,10 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using Character.Properties;
 using Character.View.Npc;
+using Game.GameWin;
+using TMPro;
 using UI;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -18,6 +21,8 @@ namespace Character.View
         [SerializeField] private float detectionRange = 2f;
         [SerializeField] private float sphereRadius = 2f;
         [SerializeField] private LayerMask characterLayer;
+        [SerializeField] private TextMeshPro playerInfoText;
+
         
         private readonly WaitForSeconds secondDelay = new(1f);
         private Coroutine holdFartCoroutine = null;
@@ -37,6 +42,7 @@ namespace Character.View
             UserId = UserIdCounter++;
 
             CharacterProperties.InjectUI(PlayersUI.Instance.GetUIBehaviourFor(UserId));
+            LobbyManager.OnTransitionToGameMode += () => SetPlayerInfoText(false);
         }
 
         private void Update()
@@ -93,7 +99,7 @@ namespace Character.View
             return CharacterPropertiesFactory.Get(false);
         }
 
-        #region PlayerInputActions
+#region PlayerInputActions
 
         public void OnMove(InputAction.CallbackContext context)
         {
@@ -138,6 +144,17 @@ namespace Character.View
                     yield return secondDelay;
                     holdFartTimer++;
                 }
+            }
+        }
+
+        public void SetPlayerInfoText(bool isEnabled, string text = default, Color textColor = default)
+        {
+            playerInfoText.enabled = isEnabled;
+            if (isEnabled)
+            {
+                playerInfoText.text = text;
+                playerInfoText.color = textColor;
+                Debug.Log(textColor);
             }
         }
         

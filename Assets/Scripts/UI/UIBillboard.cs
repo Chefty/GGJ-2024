@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class TextBilboard : MonoBehaviour
+public class UIBillboard : MonoBehaviour
 {
     private Camera mainCamera;
 

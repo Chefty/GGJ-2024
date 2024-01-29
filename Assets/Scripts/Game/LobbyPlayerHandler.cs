@@ -3,14 +3,21 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
+using Character.View;
+using System.Diagnostics.Tracing;
 
 public class LobbyPlayerHandler : MonoBehaviour
 {
-    [SerializeField] private TMPro.TMP_Text _playerNameLabelPrefab;
+    public static event Action OnAllPlayersReady;
+    
     private Dictionary<Transform, bool> _playerInputToPlayerTransform;
     private List<TMPro.TMP_Text> _labels;
-
-    public static event Action OnAllPlayersReady;
+    private Color[] playerColors = new Color[]{
+        GameConstants.PLAYER1_COLOR,
+        GameConstants.PLAYER2_COLOR,
+        GameConstants.PLAYER3_COLOR,
+        GameConstants.PLAYER4_COLOR,
+    };
 
     private void Awake()
     {
@@ -68,13 +75,12 @@ public class LobbyPlayerHandler : MonoBehaviour
 
     private void SetupPlayerForLobby(Transform player)
     {
-        player.name = $"Player {_playerInputToPlayerTransform.Count}";
+        player.name = string.Concat("P", _playerInputToPlayerTransform.Count);
         Vector3 positionInLobby = AreaManager.Instance.GetRandomPositionInLobby();
         player.position = new Vector3(positionInLobby.x, 0f, positionInLobby.z);
-        _labels.Add(Instantiate(_playerNameLabelPrefab));
-        _labels.Last().transform.SetParent(player);
-        _labels.Last().transform.localPosition = Vector3.up * 3f;
-        _labels.Last().text = player.name;
+        var playerCharacterView = player.GetComponent<PlayerCharacterView>();
+        //TODO fix 3D text color misfit to pass playerColors as param here 
+        playerCharacterView.SetPlayerInfoText(true, player.name);
     }
 
     private void MovePlayersToLevel()
@@ -91,5 +97,6 @@ public class LobbyPlayerHandler : MonoBehaviour
         }
         _playerInputToPlayerTransform.Clear();
         _labels.Clear();
+
     }
 }

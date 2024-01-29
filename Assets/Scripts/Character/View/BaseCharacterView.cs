@@ -4,6 +4,7 @@ using Character.Properties;
 using Character.Walk;
 using DG.Tweening;
 using Game.GameWin;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -35,9 +36,8 @@ namespace Character.View
         public void Fart(float amount)
         {
             GameObject instance = (GameObject)Instantiate(Resources.Load("Fart Volume Fog 2"));
-            instance.GetComponent<FartBehaviour>().IsFartBig = amount > GameConstants.DEFAULT_FART_VALUE;
-            instance.transform.position = transform.position;
-            instance.SetActive(true);
+            var fartBehabiour = instance.GetComponent<FartBehaviour>();
+            fartBehabiour.InitFart(transform.position, amount);
             characterAnimator.SetBool("Hold Fart", false);
         }
 

@@ -31,5 +31,5 @@ public class LobbyManager : MonoBehaviour
         OnStartCountDown?.Invoke();
         yield return new WaitForSeconds(lobbyAnimationDuration);
         OnTransitionToGameMode?.Invoke();
-    }
+            }
 }

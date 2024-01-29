@@ -1,29 +1,41 @@
 using System.Collections;
 using DG.Tweening;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class FartBehaviour : MonoBehaviour
 {
-    public bool IsFartBig = false;
-
     [SerializeField] private GameObject fartGameObject;
     [SerializeField] private AudioSource audioSource;
     [SerializeField] private AudioClip smallFartAudio;
     [SerializeField] private AudioClip bigFartAudio;
 
+    private readonly WaitForSeconds fartDelay = new(GameConstants.FART_DELAY);
     private Vector3 fartLocalScaleCache;
-    
-    private void OnEnable() {
+    private bool isBigFart = false;
+
+    public void InitFart(Vector3 playerPosition, float fartAmount) 
+    {
+        transform.position = playerPosition;
+        isBigFart = fartAmount > GameConstants.DEFAULT_FART_VALUE;
         fartLocalScaleCache = fartGameObject.transform.localScale;
         fartGameObject.transform.localScale = Vector3.zero;
-        audioSource.PlayOneShot(IsFartBig ? bigFartAudio : smallFartAudio);
+        InitFartSound();
         StartCoroutine(InitFartFog());
+    }
+
+    private void InitFartSound()
+    {
+        audioSource.pitch = Random.Range(0.5f, 1.5f);
+        Debug.Log(isBigFart);
+        audioSource.PlayOneShot(isBigFart ? bigFartAudio : smallFartAudio);
     }
 
     private IEnumerator InitFartFog()
     {
-        yield return new WaitForSeconds(1f);
-        fartGameObject.transform.DOScale(fartLocalScaleCache, .5f);
-        Destroy(gameObject, 2.5f);
+        yield return fartDelay;
+        var finalFartScale = isBigFart ? fartLocalScaleCache * 3 : fartLocalScaleCache;
+        fartGameObject.transform.DOScale(finalFartScale, 2f);
+        Destroy(gameObject, 3f);
     }
 }

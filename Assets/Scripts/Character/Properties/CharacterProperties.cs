@@ -63,7 +63,7 @@ namespace Character.Properties
             this.playerUIBehaviour = playerUIBehaviour;
             playerUIBehaviour.gameObject.SetActive(true);
             
-            LobbyManager.OnTransitionToGameMode += ResetPlayerUI;
+            LobbyManager.OnTransitionToGameMode += ResetPlayerFartAmount;
         }
 
         public void SetLastFartTime(float time)
@@ -71,8 +71,9 @@ namespace Character.Properties
             LastTimeFarted = time;
         }
 
-        private void ResetPlayerUI()
+        private void ResetPlayerFartAmount()
         {
+            fartAmount = 100f;
             playerUIBehaviour.UpdateNeedleRotation(FartPercentage);
         }
     }
