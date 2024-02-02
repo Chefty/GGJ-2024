@@ -2160,6 +2160,7 @@ GameObject:
   - component: {fileID: 4707474118617267083}
   - component: {fileID: 8577788470982598385}
   - component: {fileID: 3466223847705046802}
+  - component: {fileID: 7413747264114479693}
   m_Layer: 0
   m_Name: FloorScreenFrame
   m_TagString: Untagged
@@ -5319,7 +5320,7 @@ MonoBehaviour:
   m_PreserveMeshAssetOnDestroy: 0
   assetGuid: 
   m_Mesh: {fileID: 0}
-  m_VersionIndex: 3745
+  m_VersionIndex: 3748
   m_IsSelectable: 1
   m_SelectedFaces: 
   m_SelectedEdges: []
@@ -5374,6 +5375,19 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2754696523010294751}
   m_Mesh: {fileID: 0}
+--- !u!114 &7413747264114479693
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2754696523010294751}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: adebde3ea0ff394439db26abc0e127df, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  floorDisplayText: {fileID: 4433362879852533153}
 --- !u!1 &3561876906454283342
 GameObject:
   m_ObjectHideFlags: 0
@@ -14528,7 +14542,7 @@ MonoBehaviour:
   m_PreserveMeshAssetOnDestroy: 0
   assetGuid: 
   m_Mesh: {fileID: 0}
-  m_VersionIndex: 3742
+  m_VersionIndex: 3745
   m_IsSelectable: 1
   m_SelectedFaces: 
   m_SelectedEdges: []
